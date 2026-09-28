@@ -1,0 +1,11 @@
+26. Select all customers with a rating above 200.00.
+select * from customers where rating>200.00;
+27. Count the number of salespeople currently listing orders in the Orders table.
+select count(snum) from orders;
+28. Write a query that produces all customers serviced by salespeople with a commission above
+12%. Output the customer’s name and the salesperson’s rate of commission.
+select c.cnum,c.cname,s.snum,s.sname,s.comm from salespeople s join customers c on s.snum=c.cnum where s.comm>.12
+29. Find salespeople who have multiple customers.
+select s.sname,count(c.cnum) as NO.ofCust from salespeople s join customers c on s.snum=c.snum where NO.ofCust>1
+30. Find salespeople with customers located in their city.
+select s.sname,c.name,c.city from salespeople s join customers c on s.snum=c.snum where s.city=c.city; 
