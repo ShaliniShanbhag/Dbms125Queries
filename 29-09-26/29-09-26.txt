@@ -1,0 +1,26 @@
+30. Find salespeople with customers located in their city.
+select s.sname,c.cname,c.city from salespeople join customers c on s.city=c.city;
+31. Find all salespeople whose name starts with ‘P’ and the fourth character is ‘l’.
+select sname,snum from salespeople where sname like p___l%;
+32. Write a query that uses a subquery to obtain all orders for the customer named Cisneros.
+Assume you do not know his customer number.
+SELECT *
+FROM Orders
+WHERE CNUM = (
+    SELECT CNUM
+    FROM Customers
+    WHERE CNAME = 'Cisneros'
+);
+33. Find the largest orders for Serres and Rifkin.
+SELECT max(amt) as largestOrder,cnum
+FROM Orders
+WHERE CNUM IN (
+    SELECT CNUM
+    FROM Customers
+    WHERE CNAME IN ('Serres', 'Rifkin')
+)
+34. Extract the Salespeople table in the following order : SNUM, SNAME, COMMISSION, CITY.
+select snum,sname,comm as commission,city from salespeople
+35. Select all customers whose names fall in between ‘A’ and ‘G’ alphabetical range.
+SELECT * FROM Customers
+WHERE CNAME BETWEEN 'A' AND 'G';
